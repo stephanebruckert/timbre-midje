@@ -11,6 +11,3 @@
   (timbre/set-level! level)
   (timbre/info "Will be printed")
   (timbre/debug "Won't be printed"))
-
-(defn -main []
-  (init :info))

@@ -6,5 +6,4 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [com.taoensso/timbre "4.7.4"]
                  [midje "1.8.3"]]
-  :main timbre-midje.core
   :profiles {:dev {:plugins [[lein-midje "3.2.1"]]}})
