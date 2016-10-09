@@ -4,6 +4,6 @@
             [midje.sweet :refer :all]))
 
 (fact "print info but not debug"
-  (core/print :info) => nil
+  (core/init :info) => nil
   (provided
-    (timbre/default-output-fn anything) => irrelevant :times 1))
+    (core/my-output-fn anything) => irrelevant :times 1))
