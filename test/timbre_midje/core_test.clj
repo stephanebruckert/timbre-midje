@@ -1,7 +1,9 @@
 (ns timbre-midje.core-test
-  (:require [clojure.test :refer :all]
-            [timbre-midje.core :refer :all]))
+  (:require [timbre-midje.core :as core]
+            [taoensso.timbre :as timbre]
+            [midje.sweet :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(fact "print info but not debug"
+  (core/print :info) => nil
+  (provided
+    (timbre/default-output-fn anything) => irrelevant :times 1))

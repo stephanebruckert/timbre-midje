@@ -1,6 +1,11 @@
-(ns timbre-midje.core)
+(ns timbre-midje.core
+  ;; Clojure
+  (:require [taoensso.timbre :as timbre]))
 
-(defn -main
-  "I don't do a whole lot."
-  []
-  (println "Hello, World!"))
+(defn print [level]
+  (timbre/set-level! level)
+  (timbre/info "Will be printed")
+  (timbre/debug "Should not be printed"))
+
+(defn -main []
+  (init :info))
