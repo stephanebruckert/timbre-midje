@@ -6,5 +6,5 @@
 (fact "print info but not debug"
   (core/init :info) => nil
   (provided
-    (#'timbre/vargs->margs anything anything ["Will be printed"]) => {} :times 1
-    (#'timbre/vargs->margs anything anything ["Won't be printed"]) => {} :times 0))
+    (core/log-stub :info ["Will be printed"]) => irrelevant :times 1
+    (core/log-stub :debug ["Won't be printed"]) => irrelevant :times 0))
