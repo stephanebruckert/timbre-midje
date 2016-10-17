@@ -3,8 +3,16 @@
             [taoensso.timbre :as timbre]
             [midje.sweet :refer :all]))
 
+(defn log-stub [level message])
+
+(def stub-config
+  {:appenders
+    {:test-appender
+      {:enabled? true
+       :fn (fn [data] (log-stub (:level data) (:vargs data)))}}})
+
 (fact "print info but not debug"
-  (core/init :info) => nil
+  (core/init :info stub-config) => nil
   (provided
-    (core/log-stub :info ["Will be printed"]) => irrelevant :times 1
-    (core/log-stub :debug ["Won't be printed"]) => irrelevant :times 0))
+    (log-stub :info ["Will be printed"]) => irrelevant :times 1
+    (log-stub :debug ["Won't be printed"]) => irrelevant :times 0))
